@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tugas1_flutter/dashboard.dart';
+import 'package:tugas1_flutter/homeScreen.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -55,9 +56,7 @@ class _LoginscreenState extends State<Loginscreen> {
     );
 
     return Scaffold(
-   appBar: AppBar(
-        title: const Text("Login Page"),
-      ),
+  
       body: Stack(
         children: [
           // Background Image
@@ -92,6 +91,11 @@ class _LoginscreenState extends State<Loginscreen> {
                     'Selamat Datang',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(height: 12),
+                   const Text(
+                    'Silahkan isi username dan password',
+                    style: TextStyle(fontSize: 15),
+                  ),
                   const SizedBox(height: 20),
                   TextFormField(
                     controller: _username,
@@ -116,7 +120,12 @@ class _LoginscreenState extends State<Loginscreen> {
                     child: const Text('MASUK', style: TextStyle(color: Colors.white)),
                   ),
                   const SizedBox(height: 10),
-                  
+                   TextButton(
+                    onPressed: () {
+                      Navigator.pop(context,Homescreen());
+                    },
+                    child: const Text('<- kembali ke homepage', style: TextStyle(color: Colors.blue)),
+                  ),
                 ],
               ),
             ),

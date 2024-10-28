@@ -18,31 +18,98 @@ class _DashboardState extends State<Dashboard> {
     );
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 100),
-            CircularProfileAvatar(
-              '',
-              child: FlutterLogo(),
-              borderColor: const Color.fromARGB(255, 64, 108, 251),
-              borderWidth: 3,
-              elevation: 2,
-              radius: 50,
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 64, 108, 251),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
             ),
-            const SizedBox(height: 20),
-            const Text(
-              "Hallo, Ajri",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Column(
+              children: [
+                const SizedBox(height: 50),
+                CircularProfileAvatar(
+                  '',
+                  child: const FlutterLogo(),
+                  borderColor: Colors.white,
+                  borderWidth: 3,
+                  elevation: 2,
+                  radius: 50,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Hallo, Ajri",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                const SizedBox(height: 5),
+                const Text(
+                  "Selamat datang di Dashboard",
+                  style: TextStyle(fontSize: 16, color: Colors.white70),
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
-            const SizedBox(height: 15),
-            const Text("Saldo dana anda"),
-            const SizedBox(height: 10),
-            const Text("Rp 100.000.000"),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: style,
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      "Saldo Dana Anda",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Rp 100.000.000",
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildFeatureIcon(Icons.account_balance_wallet, "Wallet"),
+                _buildFeatureIcon(Icons.history, "Riwayat"),
+                _buildFeatureIcon(Icons.settings, "Pengaturan"),
+              ],
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                minimumSize: const Size.fromHeight(50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
               onPressed: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
@@ -58,7 +125,8 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (BuildContext context) => const Homescreen(),
+                            builder: (BuildContext context) =>
+                                const Homescreen(),
                           ),
                           (Route<dynamic> route) => false,
                         );
@@ -70,12 +138,26 @@ class _DashboardState extends State<Dashboard> {
               ),
               child: const Text(
                 'Keluar',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _buildFeatureIcon(IconData icon, String label) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: Colors.blue.shade100,
+          child: Icon(icon, color: Colors.blue, size: 30),
+        ),
+        const SizedBox(height: 8),
+        Text(label, style: const TextStyle(fontSize: 14)),
+      ],
     );
   }
 }
