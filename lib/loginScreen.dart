@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tugas1_flutter/dashboard.dart';
-
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -19,26 +19,40 @@ class _LoginscreenState extends State<Loginscreen> {
   final String _staticUsername = "ajri";
   final String _staticPassword = "ajri12345";
 
-  void _login(){
-    if (_username.text == _staticUsername && _password.text == _staticPassword) {
-       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Login Berhasil!")),
+  void _login() {
+    if (_username.text == _staticUsername &&
+        _password.text == _staticPassword) {
+      Fluttertoast.showToast(
+        msg: "Login Berhasil!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const Dashboard(),
+        ),
       );
-       Navigator.pushReplacement<void, void>(
-    context,
-    MaterialPageRoute<void>(
-      builder: (BuildContext context) => const Dashboard(),
-    ),
-  );
     } else {
-       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Username atau password salah")),
-      );
+     Fluttertoast.showToast(
+        msg: "Username dan Password salah",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
     }
   }
+
   Widget build(BuildContext context) {
-    final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.blue );
+    final ButtonStyle style = ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.blue);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login Page"),
@@ -65,17 +79,13 @@ class _LoginscreenState extends State<Loginscreen> {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-           ElevatedButton(
-            style: style,
-             onPressed: () {
+            ElevatedButton(
+              style: style,
+              onPressed: () {
                 _login();
               },
-            child: const Text(
-              'MASUK',
-              style: TextStyle(color: Colors.white)
-
+              child: const Text('MASUK', style: TextStyle(color: Colors.white)),
             ),
-          ),
           ],
         ),
       ),
