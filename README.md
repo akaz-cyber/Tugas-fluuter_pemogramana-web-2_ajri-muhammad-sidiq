@@ -1,5 +1,9 @@
 # tugas1_flutter
 
+Untuk loginnya:
+Username : ajri
+password : ajri12345
+
 A new Flutter project.
 
 ## Getting Started
