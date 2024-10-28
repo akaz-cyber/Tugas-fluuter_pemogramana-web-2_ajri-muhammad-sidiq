@@ -12,10 +12,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20),
-      backgroundColor: const Color.fromARGB(255, 243, 40, 33),
-    );
+ 
 
     return Scaffold(
       body: Column(
