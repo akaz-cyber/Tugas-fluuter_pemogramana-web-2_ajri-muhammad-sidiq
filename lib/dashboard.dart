@@ -1,3 +1,4 @@
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas1_flutter/homeScreen.dart';
 
@@ -19,9 +20,26 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text("Ini halaman dashboard"),
+            const SizedBox(height: 100),
+            CircularProfileAvatar(
+              '',
+              child: FlutterLogo(),
+              borderColor: const Color.fromARGB(255, 64, 108, 251),
+              borderWidth: 3,
+              elevation: 2,
+              radius: 50,
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              "Hallo, Ajri",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 15),
+            const Text("Saldo dana anda"),
+            const SizedBox(height: 10),
+            const Text("Rp 100.000.000"),
             const SizedBox(height: 20),
             ElevatedButton(
               style: style,
@@ -36,12 +54,15 @@ class _DashboardState extends State<Dashboard> {
                       child: const Text('Cancel'),
                     ),
                     TextButton(
-                      onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => const Homescreen(),
-                        ),
-                      ),
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => const Homescreen(),
+                          ),
+                          (Route<dynamic> route) => false,
+                        );
+                      },
                       child: const Text('Ok'),
                     ),
                   ],

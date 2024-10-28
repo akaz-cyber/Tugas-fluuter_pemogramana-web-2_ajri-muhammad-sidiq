@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tugas1_flutter/dashboard.dart';
@@ -12,7 +10,6 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
-  @override
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
@@ -29,8 +26,8 @@ class _LoginscreenState extends State<Loginscreen> {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0,
+      );
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -38,56 +35,93 @@ class _LoginscreenState extends State<Loginscreen> {
         ),
       );
     } else {
-     Fluttertoast.showToast(
+      Fluttertoast.showToast(
         msg: "Username dan Password salah",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0,
+      );
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.blue);
+      textStyle: const TextStyle(fontSize: 20),
+      backgroundColor: Colors.blue,
+    );
+
     return Scaffold(
-      appBar: AppBar(
+   appBar: AppBar(
         title: const Text("Login Page"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            TextFormField(
-              controller: _username,
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Enter your username',
+      body: Stack(
+        children: [
+          // Background Image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bacgroudn.png'), // Ganti dengan gambar Anda
+                fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: _password,
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Enter your password',
+          ),
+          // Login Form
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.9),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow (
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    offset: Offset(0, 5),
+                  ),
+                ],
               ),
-              obscureText: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const Text(
+                    'Selamat Datang',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _username,
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Username',
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: _password,
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Password',
+                    ),
+                    obscureText: true,
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: style,
+                    onPressed: _login,
+                    child: const Text('MASUK', style: TextStyle(color: Colors.white)),
+                  ),
+                  const SizedBox(height: 10),
+                  
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: style,
-              onPressed: () {
-                _login();
-              },
-              child: const Text('MASUK', style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
