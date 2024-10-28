@@ -35,6 +35,36 @@ class _LoginscreenState extends State<Loginscreen> {
           builder: (BuildContext context) => const Dashboard(),
         ),
       );
+    } else if (_username.text.length > 4) {
+      Fluttertoast.showToast(
+        msg: "Username tidak boleh lebih dari 4 kata",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else if (_password.text.length > 8) {
+      Fluttertoast.showToast(
+        msg: "Password tidak boleh lebih dari 8 kata",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else if (_password.text.isEmpty && _username.text.isEmpty) {
+      Fluttertoast.showToast(
+        msg: "Password dan email tidak boleh kosong",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
     } else {
       Fluttertoast.showToast(
         msg: "Username dan Password salah",
@@ -56,19 +86,16 @@ class _LoginscreenState extends State<Loginscreen> {
     );
 
     return Scaffold(
-  
       body: Stack(
         children: [
-          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/bacgroudn.png'), // Ganti dengan gambar Anda
+                image: AssetImage('assets/images/bacgroudn.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          // Login Form
           Center(
             child: Container(
               padding: const EdgeInsets.all(20),
@@ -77,7 +104,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 color: Colors.white.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: const [
-                  BoxShadow (
+                  BoxShadow(
                     color: Colors.black26,
                     blurRadius: 10,
                     offset: Offset(0, 5),
@@ -92,7 +119,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
-                   const Text(
+                  const Text(
                     'Silahkan isi username dan password',
                     style: TextStyle(fontSize: 15),
                   ),
@@ -117,14 +144,16 @@ class _LoginscreenState extends State<Loginscreen> {
                   ElevatedButton(
                     style: style,
                     onPressed: _login,
-                    child: const Text('MASUK', style: TextStyle(color: Colors.white)),
+                    child: const Text('MASUK',
+                        style: TextStyle(color: Colors.white)),
                   ),
                   const SizedBox(height: 10),
-                   TextButton(
+                  TextButton(
                     onPressed: () {
-                      Navigator.pop(context,Homescreen());
+                      Navigator.pop(context, Homescreen());
                     },
-                    child: const Text('<- kembali ke homepage', style: TextStyle(color: Colors.blue)),
+                    child: const Text('<- kembali ke homepage',
+                        style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
