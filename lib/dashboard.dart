@@ -48,7 +48,9 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
+     backgroundColor: Color(0xFFEEEDF2),
+      body:
+       PageView(
         controller: _pageController,
         onPageChanged: (index) {
           setState(() => selectedTab = index);
