@@ -31,19 +31,19 @@ class _HomescreenState extends State<Homescreen> {
                 height: 200,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/saldoImage.png'),
+                    image: AssetImage('assets/images/logo-tanaman.png'),
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Selamat Datang di Lihat Dana!',
+                'Selamat Datang di Lihat Tanaman!',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20), 
               const Text(
-                'Tempat untuk melihat saldo dana anda',
+                'Tempat untuk melihat jenis tanaman',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
