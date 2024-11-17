@@ -13,7 +13,7 @@ class _DashboardState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         title: const Text("Dashboard"),
         automaticallyImplyLeading: false,
       ),
@@ -22,9 +22,7 @@ class _DashboardState extends State<Profile> {
           Container(
             width: double.infinity,
             margin: const EdgeInsets.only(bottom: 11.0),
-
             decoration: const BoxDecoration(
-             
               color: Color.fromARGB(255, 64, 108, 251),
             ),
             child: Column(
@@ -70,11 +68,50 @@ class _DashboardState extends State<Profile> {
                     style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                 ),
-              
+                Container(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      minimumSize: const Size.fromHeight(50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Apakah yakin ingin keluar?'),
+                        content: const Text('Tekan "Ok" untuk keluar'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const Homescreen(),
+                                ),
+                                (Route<dynamic> route) => false,
+                              );
+                            },
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    child: const Text(
+                      'Keluar',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
-       
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: ElevatedButton(

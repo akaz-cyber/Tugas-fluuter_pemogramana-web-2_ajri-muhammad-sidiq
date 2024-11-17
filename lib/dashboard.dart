@@ -2,8 +2,10 @@ import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:floaty_nav_bar/floaty_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:tugas1_flutter/dashboardHome.dart';
+import 'package:tugas1_flutter/favoritePlant.dart';
 import 'package:tugas1_flutter/homeScreen.dart';
 import 'package:tugas1_flutter/profile.dart';
+import 'package:tugas1_flutter/searchController.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -55,9 +57,10 @@ class _DashboardState extends State<Dashboard> {
         onPageChanged: (index) {
           setState(() => selectedTab = index);
         },
-        children: const [
+        children: const  [
           Dashboardhome(),
-          Center(child: Text('Search')),
+          Searchcontroller(),
+          Favoriteplant(),
           Profile(),
         ],
       ),
@@ -76,11 +79,17 @@ class _DashboardState extends State<Dashboard> {
             icon: Icon(Icons.search),
             onTap: () => changeTab(1),
           ),
-          FloatyTab(
+           FloatyTab(
             isSelected: selectedTab == 2,
+            title: 'Chart',
+            icon: Icon(Icons.bookmark_border_outlined),
+            onTap: () => changeTab(2),
+          ),
+          FloatyTab(
+            isSelected: selectedTab == 3,
             title: 'Profile',
             icon: Icon(Icons.person),
-            onTap: () => changeTab(2),
+            onTap: () => changeTab(3),
           ),
         ],
       ),
