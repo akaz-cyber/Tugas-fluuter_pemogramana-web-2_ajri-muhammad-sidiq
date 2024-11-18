@@ -46,7 +46,7 @@ class _DashboardState extends State<Profile> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  "Semoga harimu menyenangkan",
+                  "Kebahagiaan menghirup udara segar",
                   style: TextStyle(fontSize: 16, color: Colors.white70),
                 ),
                 const SizedBox(height: 20),
@@ -54,104 +54,118 @@ class _DashboardState extends State<Profile> {
             ),
           ),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 1,
-              padding: const EdgeInsets.all(7),
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               children: [
+                const Center(
+                  child: Text(
+                    "Profile Data diri",
+                    style: TextStyle(
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
                 Container(
-                  color: Colors.amber,
-                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: const Text(
-                    '1',
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    'Email: Ajri@gmail.com',
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
+                const SizedBox(height: 20),
                 Container(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      minimumSize: const Size.fromHeight(50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Apakah yakin ingin keluar?'),
-                        content: const Text('Tekan "Ok" untuk keluar'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: const Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const Homescreen(),
-                                ),
-                                (Route<dynamic> route) => false,
-                              );
-                            },
-                            child: const Text('Ok'),
-                          ),
-                        ],
-                      ),
-                    ),
-                    child: const Text(
-                      'Keluar',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'Nomor telepon : +62895347086501',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'Password : **********',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'Asal Kota : Bandung',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'Kewarganeraan : Indonesia',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    minimumSize: const Size.fromHeight(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                )
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text('Apakah yakin ingin keluar?'),
+                      content: const Text('Tekan "Ok" untuk keluar'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const Homescreen(),
+                              ),
+                              (Route<dynamic> route) => false,
+                            );
+                          },
+                          child: const Text('Ok'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  child: const Text(
+                    'Keluar',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                minimumSize: const Size.fromHeight(50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-              onPressed: () => showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Apakah yakin ingin keluar?'),
-                  content: const Text('Tekan "Ok" untuk keluar'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                const Homescreen(),
-                          ),
-                          (Route<dynamic> route) => false,
-                        );
-                      },
-                      child: const Text('Ok'),
-                    ),
-                  ],
-                ),
-              ),
-              child: const Text(
-                'Keluar',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
             ),
           ),
         ],

@@ -57,7 +57,7 @@ class _LoginscreenState extends State<Loginscreen> {
       );
     } else if (_password.text.isEmpty && _username.text.isEmpty) {
       Fluttertoast.showToast(
-        msg: "Password dan email tidak boleh kosong",
+        msg: "Password dan username tidak boleh kosong",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
