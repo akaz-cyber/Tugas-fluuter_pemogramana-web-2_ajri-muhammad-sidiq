@@ -49,49 +49,77 @@ class _SearchcontrollerState extends State<Searchcontroller> {
       }
     }
   }
-
-  Widget createListView(List<String> list) {
-    return Expanded(
-      child: ListView.separated(
-        itemCount: list.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 35,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                list[index],
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
+@override
+Widget createListView(List<String> list) {
+  return Expanded(
+    child: ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.black,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(right: 10),
+                child: Image.asset(
+                  "assets/images/tanaman/${index + 1}.png",
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            color: Colors.lightBlue,
-          );
-        },
-      ),
-    );
-  }
+              Expanded(
+                child: Text(
+                  list[index],
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Cari tanaman"),
-        automaticallyImplyLeading: false,
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            TextField(
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text("Cari tanaman"),
+      automaticallyImplyLeading: false,
+    ),
+    body: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10, bottom: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextField(
               controller: searchControl,
               decoration: const InputDecoration(
+                border: InputBorder.none,
                 hintText: "Search Tanaman",
                 hintStyle: TextStyle(
                   color: Colors.grey,
@@ -100,12 +128,13 @@ class _SearchcontrollerState extends State<Searchcontroller> {
               ),
               textAlign: TextAlign.left,
             ),
-            const SizedBox(height: 10),
-            createListView(filteredList),
-            const SizedBox(height: 10),
-          ],
-        ),
+          ),
+          const SizedBox(height: 10),
+          createListView(filteredList),
+          const SizedBox(height: 10),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
