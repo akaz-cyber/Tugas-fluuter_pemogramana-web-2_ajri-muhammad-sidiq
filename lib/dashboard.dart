@@ -81,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
           ),
            FloatyTab(
             isSelected: selectedTab == 2,
-            title: 'Chart',
+            title: 'Favorite',
             icon: Icon(Icons.bookmark_border_outlined),
             onTap: () => changeTab(2),
           ),
