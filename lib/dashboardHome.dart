@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas1_flutter/detailtanaman.dart';
 
 class Dashboardhome extends StatefulWidget {
   const Dashboardhome({super.key});
@@ -9,13 +10,28 @@ class Dashboardhome extends StatefulWidget {
 
 class _DashboardhomeState extends State<Dashboardhome> {
   @override
-   final List<Map<String, String>> items = [
-    {"title": "Janda Bolong", "desc": "Monstera adansonii adalah spesies tumbuhan berbunga.."},
-    {"title": "Tanaman hias", "desc": "mencakup semua tumbuhan, baik berbentuk.."},
-    {"title": "Bonsai", "desc": "tanaman atau pohon yang dikerdilkan di dalam pot dangkal.."},
+  final List<Map<String, String>> items = [
+    {
+      "title": "Janda Bolong",
+      "desc": "Monstera adansonii adalah spesies tumbuhan berbunga.."
+    },
+    {
+      "title": "Tanaman hias",
+      "desc": "mencakup semua tumbuhan, baik berbentuk.."
+    },
+    {
+      "title": "Bonsai",
+      "desc": "tanaman atau pohon yang dikerdilkan di dalam pot dangkal.."
+    },
     {"title": "Cactus", "desc": "Tanaman yang tidak memerlukan banyak air.."},
-    {"title": "Miana", "desc": "Tanaman semak dengan tinggi dapat mencapai 1,5"},
-    {"title": "Lidah buaya", "desc": "spesies tumbuhan dengan daun berdaging tebal dari genus Aloe."},
+    {
+      "title": "Miana",
+      "desc": "Tanaman semak dengan tinggi dapat mencapai 1,5"
+    },
+    {
+      "title": "Lidah buaya",
+      "desc": "spesies tumbuhan dengan daun berdaging tebal dari genus Aloe."
+    },
     {"title": "Tanaman Pot", "desc": "Tanaman hias mencakup,,,"},
   ];
   Widget build(BuildContext context) {
@@ -34,14 +50,14 @@ class _DashboardhomeState extends State<Dashboardhome> {
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.black,
-                width: 2.0,  
+                width: 2.0,
               ),
               borderRadius: BorderRadius.circular(10),
             ),
             child: const Center(
               child: Text(
                 "Selamat datang di halaman dashboard",
-                textAlign: TextAlign.center, 
+                textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
@@ -62,16 +78,17 @@ class _DashboardhomeState extends State<Dashboardhome> {
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: items.length, 
+              itemCount: items.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 0.68,
               ),
               itemBuilder: (context, index) {
-                final item = items[index]; 
+                final item = items[index];
                 return Container(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -86,7 +103,14 @@ class _DashboardhomeState extends State<Dashboardhome> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detailtanaman(),
+                            ),
+                          );
+                        },
                         child: Container(
                           margin: const EdgeInsets.all(10),
                           child: Image.asset(
@@ -100,7 +124,7 @@ class _DashboardhomeState extends State<Dashboardhome> {
                         padding: const EdgeInsets.only(bottom: 8),
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          item["title"]!, 
+                          item["title"]!,
                           style: const TextStyle(
                             fontSize: 18,
                             color: Color(0xFF4C53A5),
@@ -111,7 +135,7 @@ class _DashboardhomeState extends State<Dashboardhome> {
                       Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          item["desc"]!, 
+                          item["desc"]!,
                           style: const TextStyle(
                             fontSize: 14,
                             color: Color(0xFF4C53A5),
